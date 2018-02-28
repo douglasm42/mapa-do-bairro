@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generated at drububu.com  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="216px" height="216px" viewBox="0 0 216 216">
+<path d="M0 0h216v192h-48v-12h12v-12h12v-36h-12v-36h12v-24h-24v12h-24v-24h12
+	v-36h-24v12h-72v-12h-24v36h12v36h-12v12h-12v60h12v12h12v12h-48v-192z" fill="rgb(247,230,214)"/>
+<path d="M36 24h24v12h-12v24h-12v-36z" fill="rgb(33,25,16)"/>
+<path d="M132 24h24v36h-12v-24h-12v-12z" fill="rgb(33,25,16)"/>
+<path d="M48 36h12v24h-12v-24z" fill="rgb(232,195,160)"/>
+<path d="M60 36h72v12h-72v-12z" fill="rgb(33,25,16)"/>
+<path d="M132 36h12v12h-12v-12z" fill="rgb(213,161,109)"/>
+<path d="M60 48h24v12h-12v12h-12v-24z" fill="rgb(213,161,109)"/>
+<path d="M84 48h12v12h-12v-12z" fill="rgb(192,128,62)"/>
+<path d="M96 48h12v12h-12v-12z" fill="rgb(135,94,51)"/>
+<path d="M108 48h12v12h-12v-12z" fill="rgb(81,59,35)"/>
+<path d="M120 48h12v12h-12v-12z" fill="rgb(135,94,51)"/>
+<path d="M132 48h12v12h-12v-12z" fill="rgb(81,59,35)"/>
+<path d="M48 60h12v36h24v12h-12v24h-12v-24h-24v-12h12v-36z" fill="rgb(33,25,16)"/>
+<path d="M72 60h12v12h-12v-12z" fill="rgb(192,128,62)"/>
+<path d="M84 60h12v12h-12v-12z" fill="rgb(135,94,51)"/>
+<path d="M96 60h12v12h-12v-12z" fill="rgb(81,59,35)"/>
+<path d="M108 60h12v12h-12v-12z" fill="rgb(135,94,51)"/>
+<path d="M120 60h12v12h-12v-12z" fill="rgb(81,59,35)"/>
+<path d="M132 60h12v36h12v12h-24v24h-12v-24h-12v-12h24v-36z" fill="rgb(33,25,16)"/>
+<path d="M60 72h24v12h-12v12h-12v-24z" fill="rgb(247,230,214)"/>
+<path d="M84 72h12v12h-12v-12z" fill="rgb(81,59,35)"/>
+<path d="M96 72h12v12h-12v-12z" fill="rgb(135,94,51)"/>
+<path d="M108 72h24v24h-12v-12h-12v-12z" fill="rgb(247,230,214)"/>
+<path d="M168 72h24v24h-12v36h12v36h-12v12h-12v12h-24v-12h12v-12h12v-60h-12v-12
+	h-12v-12h24v-12z" fill="rgb(25,26,52)"/>
+<path d="M72 84h12v12h-12v-12z" fill="rgb(34,37,78)"/>
+<path d="M84 84h12v12h-12v-12z" fill="rgb(135,94,51)"/>
+<path d="M96 84h12v12h-12v-12z" fill="rgb(81,59,35)"/>
+<path d="M108 84h12v12h-12v-12z" fill="rgb(34,37,78)"/>
+<path d="M84 96h24v12h-24v-12z" fill="rgb(254,188,4)"/>
+<path d="M24 108h12v48h12v12h24v12h-12v12h-12v-12h-12v-12h-12v-60z" fill="rgb(33,25,16)"/>
+<path d="M36 108h12v12h-12v-12z" fill="rgb(135,94,51)"/>
+<path d="M48 108h12v12h-12v-12z" fill="rgb(192,128,62)"/>
+<path d="M72 108h48v12h-48v-12z" fill="rgb(135,94,51)"/>
+<path d="M132 108h12v12h-12v-12z" fill="rgb(135,94,51)"/>
+<path d="M144 108h12v12h-12v-12z" fill="rgb(81,59,35)"/>
+<path d="M156 108h12v60h-12v12h-12v12h-12v-12h-12v-12h24v-12h12v-48z" fill="rgb(33,25,16)"/>
+<path d="M36 120h12v12h-12v-12z" fill="rgb(192,128,62)"/>
+<path d="M48 120h12v12h-12v-12z" fill="rgb(135,94,51)"/>
+<path d="M72 120h24v12h-12v12h-12v-24z" fill="rgb(232,195,160)"/>
+<path d="M96 120h12v12h12v24h-12v-12h-12v12h-12v12h-12v-24h12v-12h12v-12z" fill="rgb(213,161,109)"/>
+<path d="M108 120h12v12h-12v-12z" fill="rgb(192,128,62)"/>
+<path d="M132 120h12v12h-12v-12z" fill="rgb(81,59,35)"/>
+<path d="M144 120h12v12h-12v-12z" fill="rgb(135,94,51)"/>
+<path d="M36 132h12v24h-12v-24z" fill="rgb(135,94,51)"/>
+<path d="M48 132h12v24h-12v-24z" fill="rgb(33,25,16)"/>
+<path d="M60 132h12v36h-12v-36z" fill="rgb(135,94,51)"/>
+<path d="M120 132h12v36h-12v-36z" fill="rgb(135,94,51)"/>
+<path d="M132 132h12v24h-12v-24z" fill="rgb(33,25,16)"/>
+<path d="M144 132h12v24h-12v-24z" fill="rgb(81,59,35)"/>
+<path d="M96 144h12v12h-12v-12z" fill="rgb(192,128,62)"/>
+<path d="M48 156h12v12h-12v-12z" fill="rgb(192,128,62)"/>
+<path d="M84 156h12v12h-12v-12z" fill="rgb(192,128,62)"/>
+<path d="M96 156h12v24h-24v-12h12v-12z" fill="rgb(213,161,109)"/>
+<path d="M108 156h12v12h-12v-12z" fill="rgb(192,128,62)"/>
+<path d="M132 156h12v12h-12v-12z" fill="rgb(81,59,35)"/>
+<path d="M72 168h12v12h-12v-12z" fill="rgb(81,59,35)"/>
+<path d="M108 168h12v12h-12v-12z" fill="rgb(81,59,35)"/>
+<path d="M60 180h12v12h-12v-12z" fill="rgb(200,159,45)"/>
+<path d="M72 180h48v12h-48v-12z" fill="rgb(33,25,16)"/>
+<path d="M120 180h12v12h-12v-12z" fill="rgb(200,159,45)"/>
+<path d="M0 192h216v24h-216v-24z" fill="rgb(32,28,25)"/>
+</svg>
