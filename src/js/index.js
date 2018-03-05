@@ -27,16 +27,16 @@ function loadGoogleMapsAPI() {
 
 function initMap() {
 	// Create a map object and specify the DOM element for display.
-	var veracruz = { lat: ***REMOVED***, lng: ***REMOVED*** };
+	var goiania = { lat: -16.680650, lng: -49.256318 };
 
 	var map = new google.maps.Map(document.getElementById('map'), {
-		center: veracruz,
+		center: goiania,
 		zoom: 14
 	});
 
 	var service = new google.maps.places.PlacesService(map);
 	var request = {
-		location: veracruz,
+		location: goiania,
 		radius: '500',
 		types: ['store']
 	};
