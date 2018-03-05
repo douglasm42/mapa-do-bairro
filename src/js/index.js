@@ -1,9 +1,29 @@
-import _ from 'lodash';
-import $ from 'jquery';
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 
 import '../css/main.scss'
 
 console.log("Hello World!");
+
+export default class Hello extends Component {
+	render() {
+		return (
+			<div>
+				<div id='map'></div>
+			</div>
+		);
+	}
+}
+
+ReactDOM.render(<Hello/>, document.getElementById('app'));
+
+function loadGoogleMapsAPI() {
+	const script = document.createElement("script");
+	script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA7oz8Q4iD0yb1Qkokep8DAz78j27XjpfQ&callback=initMap&libraries=places';
+	script.async = true;
+	script.defer = true;
+	document.body.appendChild(script);
+}
 
 function initMap() {
 	// Create a map object and specify the DOM element for display.
@@ -58,3 +78,4 @@ function initMap() {
 }
 
 window.initMap = initMap;
+loadGoogleMapsAPI();
