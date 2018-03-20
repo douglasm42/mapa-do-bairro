@@ -1,9 +1,27 @@
 @import 'colors';
 @import 'fonts';
 
+$topbar-size: 48px;
+
+$sidebar-size: 300px;
+
 #map {
 	height: 100%;
 	width: 100%;
+	padding-top: $topbar-size;
+}
+
+#sidebar {
+	position: fixed;
+	top: 0;
+	left: -$sidebar-size;
+	width: $sidebar-size;
+	padding-top: $topbar-size;
+	height: 100%;
+	background-color: $background;
+	padding: $topbar-size 8px 0px;
+	transition: left 200ms ease-out;
+	box-shadow: 0 0 3px #777;
 }
 
 * {
@@ -23,22 +41,27 @@ body {
 }
 
 .topbar {
-	height: 48px;
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	width: 100%;
+	height: $topbar-size;
 	background-color: $background;
 	padding: 0px 8px;
+	box-shadow: 0 0 3px #777;
 }
 
 .menu {
-	line-height: 48px;
+	line-height: $topbar-size;
 	font-size: 32px;
 	font-weight: bold;
-	color: #ccc;
+	color: #eef;
 	text-decoration: none;
 }
 
 .title {
-	line-height: 48px;
+	line-height: $topbar-size;
 	font-size: 32px;
 	font-weight: bold;
-	color: #ccc;
+	color: #eef;
 }
