@@ -59,6 +59,25 @@ body {
 	text-decoration: none;
 }
 
+.filtro {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #eef;
+
+}
+
+.places {
+	list-style: none;
+	margin: 0;
+	padding: 10px;
+}
+
+.place {
+	font-size: 20px;
+	color: #eef;
+	margin: 10px 0;
+}
+
 .title {
 	line-height: $topbar-size;
 	font-size: 32px;
