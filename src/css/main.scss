@@ -54,15 +54,23 @@ body {
 .menu {
   line-height: $topbar-size;
   font-size: 32px;
-  font-weight: bold;
   color: #eef;
   text-decoration: none;
 }
 
 .filtro {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #eef;
+  border-radius: 0;
+  font-size: 20px;
+  font-family: inherit;
+  background-color: $background;
+  color: #eef;
+  -webkit-appearance: none;
+}
+.filtro:focus {
+    border-color:#eef;
 }
 
 .places {

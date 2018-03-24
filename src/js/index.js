@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import Map from './map';
 
 import '../css/main.scss'
+import img from '../img/menu-icon.svg'
+import img2 from '../img/menu-icon-2.svg'
 
 console.log("Hello World!");
 
