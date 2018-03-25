@@ -1,9 +1,9 @@
 @import 'colors';
 @import 'fonts';
 
-$topbar-size: 48px;
+$topbar-size: 64px;
 
-$sidebar-size: 300px;
+$sidebar-size: 100%;
 
 #map {
   height: 100%;
@@ -14,14 +14,21 @@ $sidebar-size: 300px;
 #sidebar {
   position: fixed;
   top: 0;
-  left: -$sidebar-size;
   width: $sidebar-size;
   padding-top: $topbar-size;
   height: 100%;
   background-color: $background;
   padding: $topbar-size 8px 0px;
   transition: left 200ms ease-out;
-  box-shadow: 0 0 3px #777;
+  box-shadow: 0 0 3px $gray;
+}
+
+.sidebar-hide {
+  left: -$sidebar-size;
+}
+
+.sidebar-show {
+  left: 0;
 }
 
 * {
@@ -48,29 +55,30 @@ body {
   height: $topbar-size;
   background-color: $background;
   padding: 0px 8px;
-  box-shadow: 0 0 3px #777;
+  box-shadow: 0 0 3px $gray;
 }
 
 .menu {
   line-height: $topbar-size;
   font-size: 32px;
-  color: #eef;
+  font-weight: 400;
+  color: $white;
   text-decoration: none;
 }
 
 .filtro {
   width: 100%;
   padding: 5px;
-  border: 1px solid #eef;
+  border: 1px solid $white;
   border-radius: 0;
   font-size: 20px;
   font-family: inherit;
   background-color: $background;
-  color: #eef;
+  color: $white;
   -webkit-appearance: none;
 }
 .filtro:focus {
-    border-color:#eef;
+    border-color:$white;
 }
 
 .places {
@@ -81,13 +89,13 @@ body {
 
 .place {
   font-size: 20px;
-  color: #eef;
+  color: $white;
   margin: 10px 0;
 }
 
 .title {
   line-height: $topbar-size;
   font-size: 32px;
-  font-weight: bold;
-  color: #eef;
+  font-weight: 100;
+  color: $white;
 }

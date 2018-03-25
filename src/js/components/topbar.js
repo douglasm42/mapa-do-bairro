@@ -1,4 +1,4 @@
-export default class Hello extends Component {
+export default class TopBar extends Component {
   render() {
     return (
       <header className='topbar'>

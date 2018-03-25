@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import Map from './map';
 
 import '../css/main.scss'
-import img from '../img/menu-icon.svg'
-import img2 from '../img/menu-icon-2.svg'
+// import img from '../img/menu-icon.svg'
+// import img2 from '../img/menu-icon-2.svg'
 
 console.log("Hello World!");
 
@@ -32,12 +32,19 @@ function toggleSidebar() {
   let sidebar = document.getElementById('sidebar');
   console.log(sidebar.style.left);
   if(sidebar.offsetLeft != 0) {
-    sidebar.style.left = 0;
+    //sidebar.style.left = 0;
+    sidebar.classList.remove("sidebar-hide");
+    sidebar.classList.add("sidebar-show");
     console.log("Mostrando sidebar!");
   } else {
-    sidebar.style.left = (-sidebar.offsetWidth)+'px';
+    //sidebar.style.left = (-sidebar.offsetWidth) + 'px';
+    //sidebar.style.left = '-100%';
+    sidebar.classList.remove("sidebar-show");
+    sidebar.classList.add("sidebar-hide");
     console.log("Escondendo sidebar!");
     console.log(-sidebar.offsetWidth);
+    let style = getComputedStyle(sidebar)
+    console.log("Style width: " + style.width);
   }
 }
 
