@@ -24,7 +24,7 @@ export default class Layout extends Component {
     return (
       <div>
         <Header onMenuToggle={this.onMenuToggle} />
-        <SideBar show={this.state.showSideBar} />
+        <SideBar show={this.state.showSideBar} places={this.props.places} />
         <div id='map'></div>
       </div>
     );

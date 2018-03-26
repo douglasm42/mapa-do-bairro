@@ -20,7 +20,7 @@ export default class SideBar extends Component {
     return (
       <nav id='sidebar' className={this.props.show ? 'sidebar-show' : 'sidebar-hide'}>
         <PlacesFilter handleChange={this.handleFilterChange} />
-        <PlacesList filter={this.state.filter} />
+        <PlacesList filter={this.state.filter} places={this.props.places} />
       </nav>
     );
   }

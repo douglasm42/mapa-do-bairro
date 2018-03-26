@@ -23,9 +23,19 @@ function toggleSidebar() {
 
 window.toggleSidebar = toggleSidebar;
 
+let places = [
+  { id: 1, name: 'Papelaria' },
+  { id: 2, name: 'Pet Shop' },
+  { id: 3, name: 'Padaria' },
+  { id: 4, name: 'Supermercado' },
+  { id: 5, name: 'Cartório' },
+  { id: 6, name: 'Praça' },
+  { id: 7, name: 'Estátua' },
+];
+
 let app = document.getElementById('app');
 if(app) {
-  ReactDOM.render(<Layout />, app);
+  ReactDOM.render(<Layout places={places} />, app);
 }
 
 // ReactDOM.render(<Layout/>, document.getElementById('app'));
