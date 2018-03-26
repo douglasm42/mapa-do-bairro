@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import Map from './map';
 
+import Layout from './components/layout'
+
 import '../css/main.scss'
 // import img from '../img/menu-icon.svg'
 // import img2 from '../img/menu-icon-2.svg'
@@ -50,6 +52,6 @@ function toggleSidebar() {
 
 window.toggleSidebar = toggleSidebar;
 
-// ReactDOM.render(<Hello/>, document.getElementById('app'));
+// ReactDOM.render(<Layout/>, document.getElementById('app'));
 
 // loadGoogleMapsAPI();
