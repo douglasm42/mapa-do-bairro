@@ -4,13 +4,15 @@ import Place from './place'
 
 export default class PlacesList extends Component {
   render() {
-    const places = this.props.places.map((item) =>
+    const filteredPlaces = this.props.places.filter((item) => 
+      item.name.toLowerCase().includes(this.props.filter.toLowerCase())
+    );
+    const places = filteredPlaces.map((item) =>
       <Place key={item.id.toString()} name={item.name} />
     );
 
     return (
       <ul className='places'>
-        <li className='place'>Filtro: {this.props.filter}</li>
         {places}
       </ul>
     );
