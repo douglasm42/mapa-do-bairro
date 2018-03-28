@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import PlacesFilter from './places_filter';
-import PlacesList from './places_list';
+import MenuFilter from './menu_filter';
+import MenuList from './menu_list';
 
 export default class SideBar extends Component {
   constructor(props) {
@@ -14,13 +14,14 @@ export default class SideBar extends Component {
 
   handleFilterChange(value) {
     this.setState({filter: value});
+    this.props.places.applyFilter(value);
   }
 
   render() {
     return (
       <nav id='sidebar' className={this.props.show ? 'sidebar-show' : 'sidebar-hide'}>
-        <PlacesFilter handleChange={this.handleFilterChange} />
-        <PlacesList filter={this.state.filter} places={this.props.places} />
+        <MenuFilter handleChange={this.handleFilterChange} />
+        <MenuList filter={this.state.filter} places={this.props.places} />
       </nav>
     );
   }

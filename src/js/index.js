@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 
 import Map from './map';
 
-import Layout from './components/layout'
+import Layout from './components/layout';
 
-import '../css/main.scss'
+import {places} from './data/places_data';
+
+import '../css/main.scss';
 
 function toggleSidebar() {
   let sidebar = document.getElementById('sidebar');
@@ -23,15 +25,7 @@ function toggleSidebar() {
 
 window.toggleSidebar = toggleSidebar;
 
-let places = [
-  { id: 1, name: 'Papelaria' },
-  { id: 2, name: 'Pet Shop' },
-  { id: 3, name: 'Padaria' },
-  { id: 4, name: 'Supermercado' },
-  { id: 5, name: 'Cartório' },
-  { id: 6, name: 'Praça' },
-  { id: 7, name: 'Estátua' },
-];
+console.log(places);
 
 let app = document.getElementById('app');
 if(app) {
