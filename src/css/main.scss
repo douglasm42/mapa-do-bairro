@@ -27,6 +27,7 @@ $sidebar-size: 100%;
   padding: $topbar-size 8px 0px;
   transition: left 200ms ease-out;
   // box-shadow: 0 0 3px $gray;
+  overflow: auto;
 }
 
 .sidebar-hide {

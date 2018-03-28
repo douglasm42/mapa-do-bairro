@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Map, {loadGoogleMapsAPI} from '../map/map';
+import {loadGoogleMapsAPI} from '../map/init';
 
 export default class MapContainer extends Component {
   componentDidMount() {
