@@ -38,6 +38,4 @@ if(app) {
   ReactDOM.render(<Layout places={places} />, app);
 }
 
-// ReactDOM.render(<Layout/>, document.getElementById('app'));
-
 // loadGoogleMapsAPI();

@@ -6,7 +6,7 @@ export default class PlaceData {
     this.lng = lng;
   }
 
-  getLatLng() {
+  getCoord() {
     return {lat: this.lat, lng: this.lng};
   }
 }

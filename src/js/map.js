@@ -14,7 +14,8 @@ var APIKey = 'AIzaSyA7oz8Q4iD0yb1Qkokep8DAz78j27XjpfQ';
 
 function loadGoogleMapsAPI() {
   const script = document.createElement("script");
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${APIKey}&callback=initMap&libraries=places`;
+  const url = 'https://maps.googleapis.com/maps/api/js'
+  script.src = `${url}?key=${APIKey}&callback=initMap&libraries=places`;
   script.async = true;
   script.defer = true;
   document.body.appendChild(script);
