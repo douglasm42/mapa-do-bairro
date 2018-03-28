@@ -8,27 +8,35 @@ $sidebar-size: 100%;
 #map {
   height: 100%;
   width: 100%;
+}
+
+.map-container {
+  height: 100%;
+  width: 100%;
   padding-top: $topbar-size;
 }
 
 #sidebar {
   position: fixed;
   top: 0;
+  z-index: 999;
   width: $sidebar-size;
   padding-top: $topbar-size;
   height: 100%;
   background-color: $background;
   padding: $topbar-size 8px 0px;
   transition: left 200ms ease-out;
-  box-shadow: 0 0 3px $gray;
+  // box-shadow: 0 0 3px $gray;
 }
 
 .sidebar-hide {
   left: -$sidebar-size;
+  box-shadow: none;
 }
 
 .sidebar-show {
   left: 0;
+  box-shadow: 0 0 3px $gray;
 }
 
 * {

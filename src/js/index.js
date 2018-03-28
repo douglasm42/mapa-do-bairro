@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import Map from './map';
-
 import Layout from './components/layout';
 
 import {places} from './data/places_data';

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Header from './header';
 import SideBar from './sidebar';
+import MapContainer from './map_container';
 
 export default class Layout extends Component {
   constructor(props) {
@@ -22,10 +23,10 @@ export default class Layout extends Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <Header onMenuToggle={this.onMenuToggle} />
         <SideBar show={this.state.showSideBar} places={this.props.places} />
-        <div id='map'></div>
+        <MapContainer />
       </div>
     );
   }

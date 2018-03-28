@@ -1,6 +1,6 @@
 export default class PlaceData {
-  constructor(id, name, lat, lng) {
-    this.id = id;
+  constructor(name, lat, lng) {
+    this.id = 0;
     this.name = name;
     this.lat = lat;
     this.lng = lng;

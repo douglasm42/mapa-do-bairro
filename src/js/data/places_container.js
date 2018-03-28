@@ -3,6 +3,7 @@ export default class PlacesContainer {
     this.places = [];
     this.filteredPLaces = [];
     this.filter = '';
+    this.next_id = 1;
     this.applyFilter(this.filter);
   }
 
@@ -14,6 +15,8 @@ export default class PlacesContainer {
   }
 
   add(place) {
+    place.id = this.next_id;
+    this.next_id++;
     this.places.push(place);
     this.applyFilter(this.filter);
   }
