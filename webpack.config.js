@@ -1,7 +1,8 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+var WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = {
   entry: './src/js/index.js',
@@ -31,7 +32,7 @@ module.exports = {
         use: ['html-loader']
       },
       {
-        test: /\.(jpg|svg)$/,
+        test: /\.(jpg|svg|png)$/,
         use: [
           {
             loader: 'file-loader',
@@ -39,6 +40,19 @@ module.exports = {
               name: '[name].[ext]',
               outputPath: 'img/',
               publicPath: 'img/'
+            }
+          }
+        ]
+      },
+      {
+        test: /(manifest)\.(json)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'manifest.json',
+              outputPath: '/',
+              publicPath: '/'
             }
           }
         ]
@@ -51,6 +65,23 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
+    }),
+    new WebpackPwaManifest({
+      name: 'Mapa do Bairro',
+      short_name: 'Mapa do Bairro',
+      description: 'Projeto do curso de Desenvolvedor Front End da Udacity.',
+      start_url: '/index.html',
+      background_color: '#000010',
+      icons: [
+        {
+          src: path.resolve('src/img/app-icon-1024.png'),
+          sizes: [36, 48, 72, 96, 144, 192, 512, 1024] // multiple sizes
+        },
+        // {
+        //   src: path.resolve('src/assets/large-icon.png'),
+        //   size: '192x192' // you can also use the specifications pattern
+        // }
+      ]
     }),
     new CleanWebpackPlugin(['dist'])
   ]
