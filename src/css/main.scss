@@ -1,12 +1,13 @@
-@import 'colors';
-@import 'fonts';
-@import 'variables';
+@import 'config/colors';
+@import 'config/fonts';
+@import 'config/variables';
 
 @import 'reset';
 
 @import 'header';
 @import 'sidebar';
 @import 'map';
+@import 'loading';
 
 .container {
   height: 100vh;

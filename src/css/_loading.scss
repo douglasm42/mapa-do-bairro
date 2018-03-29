@@ -1,0 +1,33 @@
+.loading {
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $black;
+  transition: visibility 1s, opacity 1s linear;
+  visibility: visible;
+  opacity: 1;
+}
+
+.loading-hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.loading-title {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  font-size: 40px;
+  font-weight: 100;
+  text-align: center;
+  color: $white;
+}
+
+.loading-subtitle {
+  font-size: 20px;
+  text-align: center;
+  color: $white;
+}

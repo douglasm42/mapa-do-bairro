@@ -20,6 +20,7 @@ function initMap() {
     bounds.extend(coord);
   });
   map._map.fitBounds(bounds);
+  window.onGoogleMapsLoad();
 }
 
 window.initMap = initMap;
