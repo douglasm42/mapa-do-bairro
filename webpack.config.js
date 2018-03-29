@@ -52,10 +52,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-    new HtmlWebpackPlugin({
-      filename: 'mockup.html',
-      template: 'src/mockup.html'
-    }),
     new CleanWebpackPlugin(['dist'])
   ]
 };

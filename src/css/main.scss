@@ -1,116 +1,14 @@
 @import 'colors';
 @import 'fonts';
+@import 'variables';
 
-$topbar-size: 64px;
+@import 'reset';
 
-$sidebar-size: 100%;
-
-#map {
-  height: 100%;
-  width: 100%;
-}
-
-.map-container {
-  height: 100%;
-  width: 100%;
-  padding-top: $topbar-size;
-}
-
-#sidebar {
-  position: fixed;
-  top: 0;
-  z-index: 999;
-  width: $sidebar-size;
-  padding-top: $topbar-size;
-  height: 100%;
-  background-color: $background;
-  padding: $topbar-size 8px 0px;
-  transition: left 200ms ease-out;
-  // box-shadow: 0 0 3px $gray;
-  overflow: auto;
-}
-
-.sidebar-hide {
-  left: -$sidebar-size;
-  box-shadow: none;
-}
-
-.sidebar-show {
-  left: 0;
-  box-shadow: 0 0 3px $gray;
-}
-
-* {
-  box-sizing: border-box;
-  font-family: $open-sans;
-}
-
-body {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
+@import 'header';
+@import 'sidebar';
+@import 'map';
 
 .container {
   height: 100vh;
   width: 100%;
-}
-
-.topbar {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  width: 100%;
-  height: $topbar-size;
-  background-color: $background;
-  padding: 0px 8px;
-  box-shadow: 0 0 3px $gray;
-}
-
-.menu {
-  line-height: $topbar-size;
-  font-size: 32px;
-  font-weight: 400;
-  color: $white;
-  text-decoration: none;
-}
-
-.filter-container {
-  width: 100%;
-  padding: 20px 10px 0;
-  margin: 0;
-}
-.filter {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid $white;
-  border-radius: 0;
-  font-size: 20px;
-  font-family: inherit;
-  background-color: $background;
-  color: $white;
-  outline: inherit;
-}
-.filter:focus {
-    border-color:$white;
-    outline: 3px solid $sky;
-}
-
-.places {
-  list-style: none;
-  margin: 0;
-  padding: 10px;
-}
-
-.place {
-  font-size: 20px;
-  color: $white;
-  margin: 10px 0;
-}
-
-.title {
-  line-height: $topbar-size;
-  font-size: 32px;
-  font-weight: 100;
-  color: $white;
 }

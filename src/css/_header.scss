@@ -1,0 +1,25 @@
+.topbar {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  height: $topbar-size;
+  background-color: $background;
+  padding: 0px 8px;
+  box-shadow: 0 0 3px $gray;
+}
+
+.menu {
+  line-height: $topbar-size;
+  font-size: 32px;
+  font-weight: 400;
+  color: $white;
+  text-decoration: none;
+}
+
+.title {
+  line-height: $topbar-size;
+  font-size: 32px;
+  font-weight: 100;
+  color: $white;
+}  

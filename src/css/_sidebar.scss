@@ -1,0 +1,56 @@
+#sidebar {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: $sidebar-size;
+  padding-top: $topbar-size;
+  height: 100%;
+  background-color: $background;
+  padding: $topbar-size 8px 0px;
+  transition: left 200ms ease-out;
+  // box-shadow: 0 0 3px $gray;
+  overflow: auto;
+}
+
+.sidebar-hide {
+  left: -$sidebar-size;
+  box-shadow: none;
+}
+
+.sidebar-show {
+  left: 0;
+  box-shadow: 0 0 3px $gray;
+}
+
+.filter-container {
+  width: 100%;
+  padding: 20px 10px 0;
+  margin: 0;
+}
+.filter {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid $white;
+  border-radius: 0;
+  font-size: 20px;
+  font-family: inherit;
+  background-color: $background;
+  color: $white;
+  outline: inherit;
+}
+.filter:focus {
+    border-color:$white;
+    outline: 3px solid $sky;
+}
+
+.places {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.place {
+  font-size: 20px;
+  color: $white;
+  margin: 10px 0;
+}
