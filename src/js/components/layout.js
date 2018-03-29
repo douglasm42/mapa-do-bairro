@@ -4,6 +4,7 @@ import Header from './header';
 import SideBar from './sidebar';
 import MapContainer from './map_container';
 import Loading from './loading';
+import Details from './details';
 
 export default class Layout extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ export default class Layout extends Component {
         <Header onMenuToggle={this.onMenuToggle} />
         <SideBar loaded={this.state.loaded} show={this.state.showSideBar} places={this.props.places} />
         <MapContainer />
+        <Details title='Teste' />
         <Loading loaded={this.state.loaded} />
       </div>
     );
