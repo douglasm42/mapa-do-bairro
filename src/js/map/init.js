@@ -1,9 +1,9 @@
 import Map from './map';
+import Marker from './marker';
 
 import Place from '../data/place';
 import { places } from '../data/places_data';
 
-import Search from './search';
 
 function initMap() {
   // Create a map object and specify the DOM element for display.
@@ -11,8 +11,15 @@ function initMap() {
 
   var map = new Map(goiania, 14);
 
-  var search = new Search(map);
-  search.fireRequest();
+  var bounds = new google.maps.LatLngBounds();
+  places.places.forEach(element => {
+    let coord = element.getCoord();
+    let marker = new Marker(element.name, coord);
+    map.addMarker(marker);
+    
+    bounds.extend(coord);
+  });
+  map._map.fitBounds(bounds);
 }
 
 window.initMap = initMap;
