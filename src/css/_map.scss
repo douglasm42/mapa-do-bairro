@@ -7,4 +7,9 @@
   height: 100%;
   width: 100%;
   padding-top: $topbar-size;
+  transition: height 200ms ease-out;
+}
+
+.map-container-small {
+  height: 50%;
 }

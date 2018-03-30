@@ -10,10 +10,16 @@ export default class Layout extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {showSideBar: false, loaded: false};
+    this.state = {
+      showSideBar: false,
+      loaded: false,
+      showDetails: true
+    };
 
     this.onMenuToggle = this.onMenuToggle.bind(this);
     this.onGoogleMapsLoad = this.onGoogleMapsLoad.bind(this);
+    this.onShowDetails = this.onShowDetails.bind(this);
+    this.onHideDetails = this.onHideDetails.bind(this);
     window.onGoogleMapsLoad  = this.onGoogleMapsLoad;
   }
 
@@ -29,13 +35,21 @@ export default class Layout extends Component {
     this.setState({loaded: true});
   }
 
+  onShowDetails() {
+    this.setState({ showDetails: true });
+  }
+
+  onHideDetails() {
+    this.setState({ showDetails: false });
+  }
+
   render() {
     return (
       <div className='container'>
         <Header onMenuToggle={this.onMenuToggle} />
         <SideBar loaded={this.state.loaded} show={this.state.showSideBar} places={this.props.places} />
-        <MapContainer />
-        <Details title='Teste' />
+        <MapContainer small={this.state.showDetails} />
+        <Details title='Teste' show={this.state.showDetails} onClose={this.onHideDetails} />
         <Loading loaded={this.state.loaded} />
       </div>
     );
