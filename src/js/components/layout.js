@@ -13,14 +13,17 @@ export default class Layout extends Component {
     this.state = {
       showSideBar: false,
       loaded: false,
-      showDetails: true
+      showDetails: false,
+      detailedPlace: null
     };
 
     this.onMenuToggle = this.onMenuToggle.bind(this);
     this.onGoogleMapsLoad = this.onGoogleMapsLoad.bind(this);
     this.onShowDetails = this.onShowDetails.bind(this);
     this.onHideDetails = this.onHideDetails.bind(this);
+    this.showDetails = this.showDetails.bind(this);
     window.onGoogleMapsLoad  = this.onGoogleMapsLoad;
+    window.showDetails = this.showDetails;
   }
 
   onMenuToggle() {
@@ -35,12 +38,18 @@ export default class Layout extends Component {
     this.setState({loaded: true});
   }
 
+  showDetails(place) {
+    this.setState({ detailedPlace: place });
+    this.onShowDetails();
+  }
+
   onShowDetails() {
     this.setState({ showDetails: true });
   }
 
   onHideDetails() {
     this.setState({ showDetails: false });
+    setTimeout(window.panToPlaces, 200)
   }
 
   render() {
@@ -49,7 +58,7 @@ export default class Layout extends Component {
         <Header onMenuToggle={this.onMenuToggle} />
         <SideBar loaded={this.state.loaded} show={this.state.showSideBar} places={this.props.places} />
         <MapContainer small={this.state.showDetails} />
-        <Details title='Teste' show={this.state.showDetails} onClose={this.onHideDetails} />
+        <Details place={this.state.detailedPlace} show={this.state.showDetails} onClose={this.onHideDetails} />
         <Loading loaded={this.state.loaded} />
       </div>
     );

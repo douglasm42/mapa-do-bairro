@@ -1,5 +1,7 @@
 import Marker from './marker';
 
+import { places } from '../data/places_data';
+
 export default class Map {
   constructor(center, zoom) {
     const myStyles = [
@@ -24,6 +26,23 @@ export default class Map {
 
   addMarker(marker) {
     marker.setMap(this._map);
+  }
+
+  filterMarkers() {
+    places.places.forEach(p => {
+      p.marker.setMap(null);
+    });
+    places.filteredPlaces.forEach(p => {
+      this.addMarker(p.marker);
+    });
+  }
+
+  panToPlaces() {
+    var bounds = new google.maps.LatLngBounds();
+    places.filteredPlaces.forEach(p => {
+      bounds.extend(p.getCoord());
+    });
+    this._map.fitBounds(bounds);
   }
 }
 

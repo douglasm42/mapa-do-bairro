@@ -23,5 +23,20 @@
     "name": "Shopping Flamboyant",
     "lat": -16.710521,
     "lng": -49.236425
+  },
+  {
+    "name": "Parque Vaca Brava",
+    "lat": -16.710085,
+    "lng": -49.270879
+  },
+  {
+    "name": "Bosque dos Buritis",
+    "lat": -16.682040,
+    "lng": -49.261581
+  },
+  {
+    "name": "Parque Areião",
+    "lat": -16.707157,
+    "lng": -49.256633
   }
 ]

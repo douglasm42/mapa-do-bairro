@@ -4,7 +4,6 @@ import Marker from './marker';
 import Place from '../data/place';
 import { places } from '../data/places_data';
 
-
 function initMap() {
   // Create a map object and specify the DOM element for display.
   var goiania = { lat: -16.680650, lng: -49.256318 };
@@ -12,15 +11,17 @@ function initMap() {
   var map = new Map(goiania, 14);
 
   var bounds = new google.maps.LatLngBounds();
-  places.places.forEach(element => {
-    let coord = element.getCoord();
-    let marker = new Marker(element.name, coord);
+  places.places.forEach(p => {
+    let marker = new Marker(p);
     map.addMarker(marker);
     
-    bounds.extend(coord);
+    bounds.extend(p.getCoord());
   });
   map._map.fitBounds(bounds);
   window.onGoogleMapsLoad();
+
+  window.panToPlaces = map.panToPlaces.bind(map);
+  window.map = map;
 }
 
 window.initMap = initMap;
