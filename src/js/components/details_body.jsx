@@ -6,12 +6,20 @@ import DetailsClose from './details_close';
 export default class DetailsBody extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: null };
+    this.state = { place: props.place, data: null };
 
     this.onReceiveData = this.onReceiveData.bind(this);
   }
 
-  fetchData(place) {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.place !== prevState.place) {
+      return {place: nextProps.place, data: null};
+    }
+    return null;
+  }
+
+  fetchData() {
+    const place = this.state.place;
     const url = 'https://pt.wikipedia.org/w/api.php';
     const query = {
       origin: '*',
@@ -30,33 +38,37 @@ export default class DetailsBody extends Component {
     for (var key in pages) {
       if (pages.hasOwnProperty(key)) {
         const page = pages[key];
-        console.log(page.title);
-        console.log(page.extract);
         this.setState({data: page.extract});
       }
     }
   }
 
   componentDidMount() {
-    const place = this.props.place;
-    this.fetchData(place);
-    console.log(place);
+    this.fetchData();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const place = this.state.place;
+    if(place && prevState.place !== place) {
+      this.fetchData(place);
+    }
   }
 
   render() {
-    const place = this.props.place;
+    const place = this.state.place;
 
     let body;
     if (this.state.data) {
       body = (
         <div className='details-body'>
-          {this.state.data}
+          <p>{this.state.data}</p>
+          <a href={'https://pt.wikipedia.org/wiki/' + place.wikipedia} className='details-link' target='_blank'>Saiba Mais</a>
         </div>
       );
     } else {
       body = (
         <div className='details-body'>
-          Carregando... {place ? place.name : '??'}
+          <p>Carregando...</p>
         </div>
       );
     }
