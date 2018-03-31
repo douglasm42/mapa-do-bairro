@@ -13,6 +13,26 @@ export default class Marker {
     this.marker_obj.addListener('click', this.onClick);
   }
 
+  doBounce() {
+    if(window.bouncing !== this) {
+      if(window.bouncing) {
+        window.bouncing.marker_obj.setAnimation(null);
+      }
+      window.bouncing = this;
+      this.marker_obj.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  }
+
+  bounce(b) {
+    const currentAnimation = this.marker_obj.getAnimation();
+    if (b && currentAnimation != google.maps.Animation.BOUNCE) {
+      this.marker_obj.setAnimation(google.maps.Animation.BOUNCE);
+      window.marker = this;
+    } else if (!b && currentAnimation != null){
+      this.marker_obj.setAnimation(null);
+    }
+  }
+
   onClick() {
     window.showDetails(this.place);
     this.marker_obj.getMap().setZoom(16);

@@ -27,10 +27,10 @@ export default class Details extends Component {
     }
 
     return (
-      <div className={'details' + (this.props.show ? '' : ' details-hide')}>
+      <article className={'details' + (this.props.show ? '' : ' details-hide')}>
         {header}
         {body}
-      </div>
+      </article>
     );
   }
 }

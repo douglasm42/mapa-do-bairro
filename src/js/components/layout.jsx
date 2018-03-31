@@ -54,13 +54,13 @@ export default class Layout extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <section className='container'>
         <Header onMenuToggle={this.onMenuToggle} />
         <SideBar loaded={this.state.loaded} show={this.state.showSideBar} places={this.props.places} onSelectPlace={this.showDetails} />
         <MapContainer small={this.state.showDetails} />
         <Details place={this.state.detailedPlace} show={this.state.showDetails} onClose={this.onHideDetails} />
         <Loading loaded={this.state.loaded} />
-      </div>
+      </section>
     );
   }
 }

@@ -13,9 +13,9 @@ export default class MenuFilter extends Component {
 
   render() {
     return (
-      <div className="filter-container">
+      <form className="filter-container">
         <input className="filter" type="text" placeholder="Busca" onChange={this.handleChange}/>
-      </div>
+      </form>
     );
   }
 }

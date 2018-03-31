@@ -12,8 +12,14 @@ export default class DetailsBody extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.place !== prevState.place) {
-      return {place: nextProps.place, data: null};
+    const prevPlace = prevState.place;
+    const nextPlace = nextProps.place;
+    if (nextPlace !== prevPlace) {
+      if(prevPlace) {
+        prevPlace.marker.bounce(false);
+      }
+      nextPlace.marker.bounce(true);
+      return {place: nextPlace, data: null};
     }
     return null;
   }
@@ -30,7 +36,7 @@ export default class DetailsBody extends Component {
       explaintext: '',
       titles: place.wikipedia
     }
-    Request.get(url).query(query).then(this.onReceiveData).catch(error => console.log(error));
+    Request.get(url).query(query).then(this.onReceiveData).catch(error => console.log(error));;
   }
 
   onReceiveData(response) {
@@ -44,7 +50,12 @@ export default class DetailsBody extends Component {
   }
 
   componentDidMount() {
+    this.state.place.marker.bounce(true);
     this.fetchData();
+  }
+
+  componentWillUnmount() {
+    this.state.place.marker.bounce(false);
   }
 
   componentDidUpdate(prevProps, prevState) {

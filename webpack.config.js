@@ -5,6 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 var WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = {
+  devtool: 'source-map',
   entry: './src/js/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),

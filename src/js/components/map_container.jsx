@@ -10,11 +10,11 @@ export default class MapContainer extends Component {
 
   render() {
     return (
-      <div className={'map-container' + (this.props.small ? ' map-container-small' : '')}>
+      <article className={'map-container' + (this.props.small ? ' map-container-small' : '')}>
         <div id='map'>
           Carregando...
         </div>
-      </div>
+      </article>
     );
   }
 }

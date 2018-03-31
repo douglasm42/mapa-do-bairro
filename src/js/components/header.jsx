@@ -7,7 +7,7 @@ export default class Header extends Component {
     return (
       <header className='topbar'>
         <MenuToggle onToggle={this.props.onMenuToggle}/>
-        <span className="title">Goiânia</span>
+        <h1 className="title">Goiânia</h1>
       </header>
     );
   }
