@@ -8,8 +8,17 @@
   width: 100%;
   padding-top: $topbar-size;
   transition: height 200ms ease-out;
+
+  @media (min-width: 1200px) {
+    transition: width 200ms ease-out;
+  }
 }
 
 .map-container-small {
   height: 50%;
+
+  @media (min-width: 1200px) {
+    height: inherit;
+    width: 60%;
+  }
 }

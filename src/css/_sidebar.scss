@@ -8,11 +8,10 @@
   background-color: $background;
   padding: $topbar-size 8px 0px;
   transition: left 200ms ease-out;
-  // box-shadow: 0 0 3px $gray;
   overflow: auto;
 
-  @media screen and (min-width: 700px) {
-    width: 400px;
+  @media (min-width: 700px) {
+    width: $sidebar-size;
   }
 }
 
@@ -20,8 +19,8 @@
   left: -100%;
   box-shadow: none;
 
-  @media screen and (min-width: 700px) {
-    left: -400px;
+  @media (min-width: 700px) {
+    left: -$sidebar-size;
   }
 }
 
@@ -65,4 +64,5 @@
   font-size: 20px;
   color: $white;
   margin: 10px 0;
+  text-decoration: none;
 }

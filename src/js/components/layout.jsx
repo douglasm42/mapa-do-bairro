@@ -40,10 +40,7 @@ export default class Layout extends Component {
 
   showDetails(place) {
     this.setState({ detailedPlace: null });
-    this.setState({ detailedPlace: place });
-    if(this.state.showSideBar) {
-      this.setState({showSideBar: false});
-    }
+    this.setState({ detailedPlace: place, showSideBar: false });
     this.onShowDetails();
   }
 
