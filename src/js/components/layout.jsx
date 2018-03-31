@@ -39,6 +39,7 @@ export default class Layout extends Component {
   }
 
   showDetails(place) {
+    this.setState({ detailedPlace: null });
     this.setState({ detailedPlace: place });
     this.onShowDetails();
   }
@@ -48,7 +49,7 @@ export default class Layout extends Component {
   }
 
   onHideDetails() {
-    this.setState({ showDetails: false });
+    this.setState({ showDetails: false, detailedPlace: null });
     setTimeout(window.panToPlaces, 200)
   }
 
