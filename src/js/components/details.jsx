@@ -8,23 +8,32 @@ export default class Details extends Component {
   }
 
   render() {
-    let text = 'Teste';
-    for (let i = 0; i < 1000; i++) {
-      text += ' teste';
-    }
-    text += ' aqui!';
+    let title;
+    let header;
+    let body;
 
-    const title = this.props.place ? this.props.place.name : 'Teste';
+    const place = this.props.place;
 
-    return (
-      <div className={'details' + (this.props.show ? '' : ' details-hide')}>
+    if(place) {
+      title = place.name;
+      header = (
         <header className='details-header'>
           <h2 className="details-title">{title}</h2>
           <DetailsClose onClose={this.props.onClose} />
         </header>
+      );
+
+      body = (
         <div className='details-body'>
-          {text}
+          lat: {place.lat} lng: {place.lng}
         </div>
+      )
+    }
+    
+    return (
+      <div className={'details' + (this.props.show ? '' : ' details-hide')}>
+        {header}
+        {body}
       </div>
     );
   }

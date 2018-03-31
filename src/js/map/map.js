@@ -11,6 +11,12 @@ export default class Map {
         stylers: [
           { visibility: "off" }
         ]
+      },
+      {
+        featureType: "transit.station.bus",
+        stylers: [
+          { visibility: "off" }
+        ]
       }
     ];
 
