@@ -70,8 +70,8 @@ module.exports = {
       template: 'src/index.html'
     }),
     new WebpackPwaManifest({
-      name: 'Mapa do Bairro',
-      short_name: 'Mapa do Bairro',
+      name: 'Goiânia',
+      short_name: 'Goiânia',
       description: 'Projeto do curso de Desenvolvedor Front End da Udacity.',
       start_url: '/index.html',
       background_color: '#000010',

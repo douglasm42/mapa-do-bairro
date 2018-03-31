@@ -4,6 +4,7 @@ import { places } from '../data/places_data';
 
 export default class Map {
   constructor(center, zoom) {
+    this.center = center;
     const myStyles = [
       {
         featureType: "poi",
@@ -43,12 +44,23 @@ export default class Map {
     });
   }
 
+  panToPosition(position) {
+    this._map.setZoom(16);
+    this._map.panTo(position);
+  }
+
   panToPlaces() {
-    var bounds = new google.maps.LatLngBounds();
+    let bounds = new google.maps.LatLngBounds();
+    let count = 0;
     places.filteredPlaces.forEach(p => {
       bounds.extend(p.getCoord());
+      count++;
     });
-    this._map.fitBounds(bounds);
+    if(count > 1) {
+      this._map.fitBounds(bounds);
+    } else if(count === 1) {
+      this.panToPosition(places.filteredPlaces[0].getCoord());
+    }
   }
 }
 

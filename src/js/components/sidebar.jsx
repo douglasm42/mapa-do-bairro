@@ -16,6 +16,7 @@ export default class SideBar extends Component {
     this.setState({filter: value});
     this.props.places.applyFilter(value);
     window.map.filterMarkers();
+    window.panToPlaces();
   }
 
   render() {
