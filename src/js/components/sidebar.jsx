@@ -20,9 +20,9 @@ export default class SideBar extends Component {
 
   render() {
     return (
-      <nav id='sidebar' className={this.props.show ? 'sidebar-show' : 'sidebar-hide'}>
+      <nav className={'sidebar ' + (this.props.show ? 'sidebar-show' : 'sidebar-hide')}>
         <MenuFilter handleChange={this.handleFilterChange} />
-        <MenuList filter={this.state.filter} places={this.props.places} />
+        <MenuList filter={this.state.filter} places={this.props.places} onSelectPlace={this.props.onSelectPlace} />
       </nav>
     );
   }

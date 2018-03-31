@@ -41,6 +41,9 @@ export default class Layout extends Component {
   showDetails(place) {
     this.setState({ detailedPlace: null });
     this.setState({ detailedPlace: place });
+    if(this.state.showSideBar) {
+      this.setState({showSideBar: false});
+    }
     this.onShowDetails();
   }
 
@@ -57,7 +60,7 @@ export default class Layout extends Component {
     return (
       <div className='container'>
         <Header onMenuToggle={this.onMenuToggle} />
-        <SideBar loaded={this.state.loaded} show={this.state.showSideBar} places={this.props.places} />
+        <SideBar loaded={this.state.loaded} show={this.state.showSideBar} places={this.props.places} onSelectPlace={this.showDetails} />
         <MapContainer small={this.state.showDetails} />
         <Details place={this.state.detailedPlace} show={this.state.showDetails} onClose={this.onHideDetails} />
         <Loading loaded={this.state.loaded} />

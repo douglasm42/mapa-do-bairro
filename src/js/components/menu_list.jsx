@@ -8,7 +8,7 @@ export default class MenuList extends Component {
     //   item.name.toLowerCase().includes(this.props.filter.toLowerCase())
     // );
     const places = this.props.places.filteredPlaces.map((item) =>
-      <MenuItem key={item.id.toString()} name={item.name} />
+      <MenuItem key={item.id.toString()} place={item} onSelect={this.props.onSelectPlace} />
     );
 
     return (

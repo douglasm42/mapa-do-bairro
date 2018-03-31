@@ -1,8 +1,8 @@
-#sidebar {
+.sidebar {
   position: fixed;
   top: 0;
   z-index: 999;
-  width: $sidebar-size;
+  width: 100%;
   padding-top: $topbar-size;
   height: 100%;
   background-color: $background;
@@ -10,11 +10,19 @@
   transition: left 200ms ease-out;
   // box-shadow: 0 0 3px $gray;
   overflow: auto;
+
+  @media screen and (min-width: 700px) {
+    width: 400px;
+  }
 }
 
 .sidebar-hide {
-  left: -$sidebar-size;
+  left: -100%;
   box-shadow: none;
+
+  @media screen and (min-width: 700px) {
+    left: -400px;
+  }
 }
 
 .sidebar-show {
@@ -50,6 +58,10 @@
 }
 
 .place {
+  margin: 10px 0;
+}
+
+.place-link {
   font-size: 20px;
   color: $white;
   margin: 10px 0;
