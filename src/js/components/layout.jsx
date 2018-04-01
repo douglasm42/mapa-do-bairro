@@ -19,7 +19,6 @@ export default class Layout extends Component {
 
     this.onMenuToggle = this.onMenuToggle.bind(this);
     this.onGoogleMapsLoad = this.onGoogleMapsLoad.bind(this);
-    this.onShowDetails = this.onShowDetails.bind(this);
     this.onHideDetails = this.onHideDetails.bind(this);
     this.showDetails = this.showDetails.bind(this);
     window.onGoogleMapsLoad  = this.onGoogleMapsLoad;
@@ -39,12 +38,7 @@ export default class Layout extends Component {
   }
 
   showDetails(place) {
-    this.setState({ detailedPlace: place, showSideBar: false });
-    this.onShowDetails();
-  }
-
-  onShowDetails() {
-    this.setState({ showDetails: true });
+    this.setState({ detailedPlace: place, showSideBar: false, showDetails: true });
   }
 
   onHideDetails() {

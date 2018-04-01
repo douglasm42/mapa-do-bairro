@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// Item da lista de lugares na barra de navegação
 export default class MenuItem extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,6 @@ export default class MenuItem extends Component {
 
   handleClick() {
     this.props.onSelect(this.props.place);
-    this.props.place.marker.onClick();
   }
 
   render() {

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import MenuFilter from './menu_filter';
 import MenuList from './menu_list';
 
+// Exibe um campo de filtro e a lista de locais marcados no mapa
 export default class SideBar extends Component {
   constructor(props) {
     super(props);

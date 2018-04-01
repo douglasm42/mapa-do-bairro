@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+// Tela de carregamento
+// é exibida enquanto o carregamento da API do Google Maps é feita
 export default class Loading extends Component {
   render() {
     return (
