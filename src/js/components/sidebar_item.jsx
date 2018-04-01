@@ -8,6 +8,10 @@ export default class SideBarItem extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount() {
+    this.props.place.marker.setClickListener(this.handleClick);
+  }
+
   handleClick() {
     this.props.onSelect(this.props.place);
   }

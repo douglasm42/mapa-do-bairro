@@ -15,10 +15,6 @@ export default class DetailsBody extends Component {
     const prevPlace = prevState.place;
     const nextPlace = nextProps.place;
     if (nextPlace !== prevPlace) {
-      if(prevPlace) {
-        prevPlace.marker.bounce(false);
-      }
-      nextPlace.marker.bounce(true);
       return {place: nextPlace, data: null};
     }
     return null;
@@ -50,18 +46,13 @@ export default class DetailsBody extends Component {
   }
 
   componentDidMount() {
-    this.state.place.marker.bounce(true);
     this.fetchData();
-  }
-
-  componentWillUnmount() {
-    this.state.place.marker.bounce(false);
   }
 
   componentDidUpdate(prevProps, prevState) {
     const place = this.state.place;
     if(place && prevState.place !== place) {
-      this.fetchData(place);
+      this.fetchData();
     }
   }
 

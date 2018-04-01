@@ -35,12 +35,23 @@ export default class Layout extends Component {
   }
 
   showDetails(place) {
+    let prevPlace = this.state.detailedPlace;
+
+    // Faz o marcador anterior parar de pular
+    place.marker.bounce(true);
+    if (prevPlace) {
+      prevPlace.marker.bounce(false);
+    }
+
     this.setState({ detailedPlace: place, showSideBar: false });
+    this.props.map.panToPosition(place.position);
   }
 
   onHideDetails() {
+    let map = this.props.map;
+    this.detailedPlace.marker.bounce(false);
     this.setState({ detailedPlace: null });
-    setTimeout(window.panToPlaces, 200);
+    setTimeout(map.panToPlaces.bind(map), 200);
   }
 
   render() {

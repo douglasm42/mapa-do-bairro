@@ -25,9 +25,10 @@ export default class Details extends Component {
         <DetailsBody place={place} />
       );
     }
+    const hide = this.props.place ? '' : ' details-hide';
 
     return (
-      <article className={'details' + (this.props.show ? '' : ' details-hide')}>
+      <article className={'details' + hide}>
         {header}
         {body}
       </article>

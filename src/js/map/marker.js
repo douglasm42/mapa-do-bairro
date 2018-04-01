@@ -8,7 +8,7 @@ export default class Marker {
 
     // Cria o marcador
     this.marker_obj = new google.maps.Marker({
-      //icon: image,
+      icon: 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png',
       title: place.name,
       position: place.position
     });
