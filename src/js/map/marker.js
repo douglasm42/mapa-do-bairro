@@ -1,25 +1,8 @@
 import redMarker from '../../img/marker-red.png';
+// import blackMarker from '../../img/marker-black.png';
 import blueMarker from '../../img/marker-blue.png';
-import skyMarker from '../../img/marker-sky.png';
-import grayMarker from '../../img/marker-gray.png';
-
-const ICONS = {
-  red: {
-    url: redMarker
-  },
-  blue: {
-    url: blueMarker
-  },
-  sky: {
-    url: skyMarker
-  },
-  gray: {
-    url: grayMarker
-  }
-};
-
-const DEFAULT_ICON = ICONS.blue;
-const SELECTED_ICON = ICONS.sky;
+// import skyMarker from '../../img/marker-sky.png';
+// import grayMarker from '../../img/marker-gray.png';
 
 // Uso esta classe para facilitar o controle do marcador no mapa
 export default class Marker {
@@ -31,7 +14,7 @@ export default class Marker {
 
     // Cria o marcador
     this.marker_obj = new google.maps.Marker({
-      icon: DEFAULT_ICON,
+      icon: Marker.getDefaultIcon(),
       title: place.name,
       position: place.position
     });
@@ -60,18 +43,30 @@ export default class Marker {
     }
   }
 
-  setColor(c) {
-    this.marker_obj.setIcon(icons[c]);
+  // Obtém o icone padrão do marcador
+  static getDefaultIcon() {
+    return {
+      url: redMarker,
+      scaledSize: new google.maps.Size(48, 48)
+    };
+  }
+
+  // Obtém o icone que indica qual marcador está selecionado
+  static getSelectedIcon() {
+    return {
+      url: blueMarker,
+      scaledSize: new google.maps.Size(48, 48)
+    };
   }
 
   setSelected() {
     // this.marker_obj.setAnimation(google.maps.Animation.BOUNCE);
-    this.marker_obj.setIcon(SELECTED_ICON);
+    this.marker_obj.setIcon(Marker.getSelectedIcon());
   }
 
   setUnselected() {
     // this.marker_obj.setAnimation(null);
-    this.marker_obj.setIcon(DEFAULT_ICON);
+    this.marker_obj.setIcon(Marker.getDefaultIcon());
   }
 
   // Esconde o marcador
