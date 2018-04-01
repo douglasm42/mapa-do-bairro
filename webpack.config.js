@@ -2,7 +2,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-var WebpackPwaManifest = require('webpack-pwa-manifest');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 module.exports = {
   devtool: 'source-map',

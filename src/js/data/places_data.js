@@ -1,10 +1,12 @@
 import PlacesContainer from './places_container';
-import Place from './place';
 
-import places_data from './places_data.json';
+// Importa os dados dos lugares de um arquivo json
+import places_data_json from './places_data.json';
 
+// Expota o container de lugares
 export let places = new PlacesContainer();
 
-places_data.forEach(p => {
-  places.add(new Place(p.name, p.lat, p.lng, p.wikipedia));
+// Adiciona os lugares ao container
+places_data_json.forEach(p => {
+  places.add(p);
 });

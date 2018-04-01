@@ -1,10 +1,27 @@
 import Marker from './marker';
 
-import { places } from '../data/places_data';
+// Posição do centro do mapa
+let goiania = { lat: -16.680650, lng: -49.256318 };
 
-export default class Map {
-  constructor(center, zoom) {
+// Exporta o objeto do mapa em vez da classe.
+// Assim só pode existir um objeto desta classe.
+// Uma forma de singleton.
+export let map = new Map(goiania, 14, places);
+
+class Map {
+  constructor(center, zoom, places) {
     this.center = center;
+    this.places = places;
+    this.loaded = false;
+  }
+
+  init() {
+    // Verifica se o mapa já foi inicializado
+    if(this.loaded) {
+      throw "Mapa já foi inicializado!";
+    }
+
+    // Esconde pontos de interesse padrão no mapa
     const myStyles = [
       {
         featureType: "poi",
@@ -21,7 +38,8 @@ export default class Map {
       }
     ];
 
-    this._map = new google.maps.Map(document.getElementById('map'), {
+    // Cria o mapa
+    this.map_obj = new google.maps.Map(document.getElementById('map'), {
       center: center,
       zoom: zoom,
       mapTypeControl: false,
@@ -29,37 +47,61 @@ export default class Map {
       streetViewControl: false,
       styles: myStyles
     });
+
+    // Cria Marcadores para os lugares
+    this.places.allPlaces.forEach(p => {
+      let marker = new Marker(p);
+      this.addMarker(marker);
+    });
+
+    // Indica que a inicialização foi concluida
+    this.loaded = true;
   }
 
-  addMarker(marker) {
-    marker.setMap(this._map);
-  }
-
+  // Esconde todos os marcadores e exibe somente os que
+  // passaram no filtro de lugares.
+  // Só pode ser executada depois da conclusão do carregamento.
   filterMarkers() {
-    places.places.forEach(p => {
-      p.marker.setMap(null);
-    });
-    places.filteredPlaces.forEach(p => {
-      this.addMarker(p.marker);
-    });
+    if(this.loaded) {
+      this.places.allPlaces.forEach(p => {
+        p.marker.hide();
+      });
+      this.places.filteredPlaces.forEach(p => {
+        p.marker.show(this);
+      });
+    } else {
+      throw "Mapa não inicializado!";
+    }
   }
 
+  // Move o mapa paa a posição passada por parametro.
+  // Só pode ser executada depois da conclusão do carregamento.
   panToPosition(position) {
-    this._map.setZoom(16);
-    this._map.panTo(position);
+    if (this.loaded) {
+      this.map_obj.setZoom(16);
+      this.map_obj.panTo(position);
+    } else {
+      throw "Mapa não inicializado!";
+    }
   }
 
+  // Ajusta o mapa para mostrar todos os lugares
+  // visiveis no mapa.
+  // Só pode ser executada depois da conclusão do carregamento.
   panToPlaces() {
-    let bounds = new google.maps.LatLngBounds();
-    let count = 0;
-    places.filteredPlaces.forEach(p => {
-      bounds.extend(p.getCoord());
-      count++;
-    });
-    if(count > 1) {
-      this._map.fitBounds(bounds);
-    } else if(count === 1) {
-      this.panToPosition(places.filteredPlaces[0].getCoord());
+    if (this.loaded) {
+      const filteredPlaces = this.places.filteredPlaces;
+      if(filteredPlaces.length > 1) {
+        let bounds = new google.maps.LatLngBounds();
+        this.places.filteredPlaces.forEach(p => {
+          bounds.extend(p.position);
+        });
+        this.map_obj.fitBounds(bounds);
+      } else if(filteredPlaces.length === 1) {
+        this.panToPosition(this.places.filteredPlaces[0].position);
+      }
+    } else {
+      throw "Mapa não inicializado!";
     }
   }
 }

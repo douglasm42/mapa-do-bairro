@@ -1,50 +1,66 @@
 [
   {
     "name": "Palácio das Esmeraldas",
-    "lat": -16.681105,
-    "lng": -49.256208,
+    "position": {
+      "lat": -16.681105,
+      "lng": -49.256208
+    },
     "wikipedia": "Palácio_das_Esmeraldas"
   },
   {
     "name": "Correios",
-    "lat": -16.679806,
-    "lng": -49.257677,
+    "position": {
+      "lat": -16.679806,
+      "lng": -49.257677
+    },
     "wikipedia": "Empresa_Brasileira_de_Correios_e_Telégrafos"
   },
   {
     "name": "PUC Goiás",
-    "lat": -16.678510,
-    "lng": -49.245315,
+    "position": {
+      "lat": -16.678510,
+      "lng": -49.245315
+    },
     "wikipedia": "Pontifícia_Universidade_Católica_de_Goiás"
   },
   {
     "name": "Estádio Serra Dourada",
-    "lat": -16.699252,
-    "lng": -49.234222,
+    "position": {
+      "lat": -16.699252,
+      "lng": -49.234222
+    },
     "wikipedia": "Estádio_Serra_Dourada"
   },
   {
     "name": "Shopping Flamboyant",
-    "lat": -16.710521,
-    "lng": -49.236425,
+    "position": {
+      "lat": -16.710521,
+      "lng": -49.236425
+    },
     "wikipedia": "Flamboyant_Shopping_Center"
   },
   {
     "name": "Parque Vaca Brava",
-    "lat": -16.710085,
-    "lng": -49.270879,
+    "position": {
+      "lat": -16.710085,
+      "lng": -49.270879
+    },
     "wikipedia": "Parque_Vaca_Brava"
   },
   {
     "name": "Bosque dos Buritis",
-    "lat": -16.682040,
-    "lng": -49.261581,
+    "position": {
+      "lat": -16.682040,
+      "lng": -49.261581
+    },
     "wikipedia": "Bosque_dos_Buritis_(Goiânia)"
   },
   {
     "name": "Parque Areião",
-    "lat": -16.707157,
-    "lng": -49.256633,
+    "position": {
+      "lat": -16.707157,
+      "lng": -49.256633
+    },
     "wikipedia": "Parque_Areião"
   }
 ]
