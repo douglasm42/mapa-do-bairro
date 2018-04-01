@@ -21,7 +21,6 @@ const APIKey = 'AIzaSyA7oz8Q4iD0yb1Qkokep8DAz78j27XjpfQ';
 export function loadGoogleMapsAPI() {
   const script = document.createElement("script");
   const url = 'https://maps.googleapis.com/maps/api/js'
-  // script.src = `${url}?key=${APIKey}&callback=initMap&libraries=places`;
   script.src = `${url}?key=${APIKey}&callback=initMap`;
   script.async = true;
   script.defer = true;
