@@ -39,25 +39,6 @@ aplicativo.
 
 ### `data`
 
-Os dados do aplicativo ficam no arquivo `places_data.json`, isso
-facilita a manutenção dos lugares disponiveis no aplicativo.
-Os lugares são definidos no arquivo da seguinte forma:
-
-```json
-  {
-    "name": "Palácio das Esmeraldas",
-    "position": {
-      "lat": -16.681105,
-      "lng": -49.256208
-    },
-    "wikipedia": "Palácio_das_Esmeraldas"
-  }
-```
-
-O parametro `wikipedia` é o título do artigo que deve ser vinculado
-ao local, este parametro existe pois o título na wikipédia pode
-ser diferente ou muito longo para ser exibido no aplicativo.
-
 `places_container` é uma classe para facilitar a manipulação dos
 lugares e `places_data` carrega os lugares dentro do container e
 exporta ele. Mais detalhes nos comentários.

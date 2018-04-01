@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Item da lista de lugares na barra de navegação
-export default class MenuItem extends Component {
+export default class SideBarItem extends Component {
   constructor(props) {
     super(props);
 

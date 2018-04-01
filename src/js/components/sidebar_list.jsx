@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 
-import MenuItem from './menu_item'
+import SideBarItem from './sidebar_item'
 
 // Exibe a lista de lugares na barra de navegação
-export default class MenuList extends Component {
+export default class SideBarList extends Component {
   render() {
     // Obtém os lugares a serem exibidos a partir da lista
     // filtrada de lugares.
+    const map = this.props.map;
     const places = this.props.places.filteredPlaces.map((item) =>
-      <MenuItem key={item.id.toString()} place={item} onSelect={this.props.onSelectPlace} />
+      <SideBarItem
+        key={item.id.toString()}
+        place={item}
+        map={map}
+        onSelect={this.props.onSelectPlace}
+      />
     );
 
     return (

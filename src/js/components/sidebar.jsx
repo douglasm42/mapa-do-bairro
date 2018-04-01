@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import MenuFilter from './menu_filter';
-import MenuList from './menu_list';
+import SideBarFilter from './sidebar_filter';
+import SideBarList from './sidebar_list';
 
 // Exibe um campo de filtro e a lista de locais marcados no mapa
 export default class SideBar extends Component {
@@ -16,15 +16,21 @@ export default class SideBar extends Component {
   handleFilterChange(value) {
     this.setState({filter: value});
     this.props.places.applyFilter(value);
-    window.map.filterMarkers();
-    window.panToPlaces();
+    this.props.map.filterMarkers();
+    this.props.map.panToPlaces();
   }
 
   render() {
+    const hide = this.props.show ? ' sidebar-show' : ' sidebar-hide';
     return (
-      <nav className={'sidebar ' + (this.props.show ? 'sidebar-show' : 'sidebar-hide')}>
-        <MenuFilter handleChange={this.handleFilterChange} />
-        <MenuList filter={this.state.filter} places={this.props.places} onSelectPlace={this.props.onSelectPlace} />
+      <nav className={'sidebar' + hide}>
+        <SideBarFilter handleChange={this.handleFilterChange} />
+        <SideBarList
+          filter={this.state.filter}
+          places={this.props.places}
+          map={this.props.map}
+          onSelectPlace={this.props.onSelectPlace}
+        />
       </nav>
     );
   }

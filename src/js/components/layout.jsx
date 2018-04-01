@@ -13,19 +13,16 @@ export default class Layout extends Component {
     this.state = {
       showSideBar: false,
       loaded: false,
-      showDetails: false,
       detailedPlace: null
     };
 
-    this.onMenuToggle = this.onMenuToggle.bind(this);
+    this.onSideBarToggle = this.onSideBarToggle.bind(this);
     this.onGoogleMapsLoad = this.onGoogleMapsLoad.bind(this);
     this.onHideDetails = this.onHideDetails.bind(this);
     this.showDetails = this.showDetails.bind(this);
-    window.onGoogleMapsLoad  = this.onGoogleMapsLoad;
-    window.showDetails = this.showDetails;
   }
 
-  onMenuToggle() {
+  onSideBarToggle() {
     this.setState(function (prevState, props) {
       return {
         showSideBar: (prevState.showSideBar ? false : true)
@@ -38,21 +35,44 @@ export default class Layout extends Component {
   }
 
   showDetails(place) {
-    this.setState({ detailedPlace: place, showSideBar: false, showDetails: true });
+    this.setState({ detailedPlace: place, showSideBar: false });
   }
 
   onHideDetails() {
-    this.setState({ showDetails: false, detailedPlace: null });
-    setTimeout(window.panToPlaces, 200)
+    this.setState({ detailedPlace: null });
+    setTimeout(window.panToPlaces, 200);
   }
 
   render() {
+    let sidebar;
+    let details;
+
+    // Só exibe a sidebar e a tela de detalhes depois do mapa ter carregado
+    if(this.state.loaded) {
+      sidebar = <SideBar
+        show={this.state.showSideBar}
+        places={this.props.places}
+        map={this.props.map}
+        onSelectPlace={this.showDetails}
+      />;
+
+      details = <Details
+        place={this.state.detailedPlace}
+        map={this.props.map}
+        onClose={this.onHideDetails}
+      />;
+    }
+
     return (
       <section className='container'>
-        <Header onMenuToggle={this.onMenuToggle} />
-        <SideBar loaded={this.state.loaded} show={this.state.showSideBar} places={this.props.places} onSelectPlace={this.showDetails} />
-        <MapContainer small={this.state.showDetails} />
-        <Details place={this.state.detailedPlace} show={this.state.showDetails} onClose={this.onHideDetails} />
+        <Header onSideBarToggle={this.onSideBarToggle} />
+        {sidebar}
+        <MapContainer
+          map={this.props.map}
+          small={this.state.detailedPlace !== null}
+          onGoogleMapsLoad={this.onGoogleMapsLoad}
+        />
+        {details}
         <Loading loaded={this.state.loaded} />
       </section>
     );

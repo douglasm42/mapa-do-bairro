@@ -1,18 +1,17 @@
 import Marker from './marker';
+import { places } from '../data/places_data';
 
 // Posição do centro do mapa
 let goiania = { lat: -16.680650, lng: -49.256318 };
 
-// Exporta o objeto do mapa em vez da classe.
-// Assim só pode existir um objeto desta classe.
-// Uma forma de singleton.
-export let map = new Map(goiania, 14, places);
-
+// Classe para controlar o mapa
 class Map {
   constructor(center, zoom, places) {
     this.center = center;
+    this.zoom = zoom;
     this.places = places;
     this.loaded = false;
+    this.onGoogleMapsLoad = null;
   }
 
   init() {
@@ -40,8 +39,8 @@ class Map {
 
     // Cria o mapa
     this.map_obj = new google.maps.Map(document.getElementById('map'), {
-      center: center,
-      zoom: zoom,
+      center: this.center,
+      zoom: this.zoom,
       mapTypeControl: false,
       fullscreenControl: false,
       streetViewControl: false,
@@ -51,11 +50,17 @@ class Map {
     // Cria Marcadores para os lugares
     this.places.allPlaces.forEach(p => {
       let marker = new Marker(p);
-      this.addMarker(marker);
+      marker.show(this);
     });
 
     // Indica que a inicialização foi concluida
     this.loaded = true;
+
+    this.onGoogleMapsLoad();
+  }
+
+  setOnLoadListener(f) {
+    this.onGoogleMapsLoad = f;
   }
 
   // Esconde todos os marcadores e exibe somente os que
@@ -106,3 +111,7 @@ class Map {
   }
 }
 
+// Exporta o objeto do mapa em vez da classe.
+// Assim só pode existir um objeto desta classe.
+// Uma forma de singleton.
+export let map = new Map(goiania, 14, places);

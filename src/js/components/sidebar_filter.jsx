@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class MenuFilter extends Component {
+export default class SideBarFilter extends Component {
   constructor(props) {
     super(props);
 

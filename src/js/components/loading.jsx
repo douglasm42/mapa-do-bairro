@@ -4,8 +4,9 @@ import React, { Component } from 'react';
 // é exibida enquanto o carregamento da API do Google Maps é feita
 export default class Loading extends Component {
   render() {
+    const hide = this.props.loaded ? ' loading-hide' : '';
     return (
-      <article className={'loading' + (this.props.loaded ? ' loading-hide' : '')}>
+      <article className={'loading' + hide}>
         <h1 className='loading-title'>
           Goiânia
           <p className='loading-subtitle'>Carregando...</p>
