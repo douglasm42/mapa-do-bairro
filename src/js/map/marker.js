@@ -1,3 +1,26 @@
+import redMarker from '../../img/marker-red.png';
+import blueMarker from '../../img/marker-blue.png';
+import skyMarker from '../../img/marker-sky.png';
+import grayMarker from '../../img/marker-gray.png';
+
+const ICONS = {
+  red: {
+    url: redMarker
+  },
+  blue: {
+    url: blueMarker
+  },
+  sky: {
+    url: skyMarker
+  },
+  gray: {
+    url: grayMarker
+  }
+};
+
+const DEFAULT_ICON = ICONS.blue;
+const SELECTED_ICON = ICONS.sky;
+
 // Uso esta classe para facilitar o controle do marcador no mapa
 export default class Marker {
   constructor(place) {
@@ -8,7 +31,7 @@ export default class Marker {
 
     // Cria o marcador
     this.marker_obj = new google.maps.Marker({
-      icon: 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png',
+      icon: DEFAULT_ICON,
       title: place.name,
       position: place.position
     });
@@ -37,9 +60,18 @@ export default class Marker {
     }
   }
 
-  // Ativa ou desativa a animação do marcador
-  bounce(b) {
-    this.marker_obj.setAnimation(b ? google.maps.Animation.BOUNCE : null);
+  setColor(c) {
+    this.marker_obj.setIcon(icons[c]);
+  }
+
+  setSelected() {
+    // this.marker_obj.setAnimation(google.maps.Animation.BOUNCE);
+    this.marker_obj.setIcon(SELECTED_ICON);
+  }
+
+  setUnselected() {
+    // this.marker_obj.setAnimation(null);
+    this.marker_obj.setIcon(DEFAULT_ICON);
   }
 
   // Esconde o marcador

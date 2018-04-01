@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 
 import Layout from './components/layout';
 
-import {places} from './data/places_data';
-import {map} from './map/map';
+import { places } from './data/places_data';
+import { map } from './map/map';
 
 import '../css/main.scss';
 
