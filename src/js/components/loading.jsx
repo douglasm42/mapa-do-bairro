@@ -8,7 +8,7 @@ export default class Loading extends Component {
     let message;
     if(this.props.loadError) {
       message = (
-        <p className='loading-subtitle loading-error'>
+        <p className='loading-subtitle error'>
           Não foi possivel carregar o mapa.
           <br/>
           Recarregue a página.

@@ -4,7 +4,7 @@
   top: 50%;
   position: fixed;
   z-index: 500;
-  background-color: $white;
+  background-color: $whiter;
   box-shadow: 0 9px 11px 10px $gray;
   transition: top 200ms ease-out;
 
@@ -34,7 +34,7 @@
   height: 48px;
   justify-content: space-between;
   padding: 8px;
-  border-bottom: 1px solid $black;
+  border-bottom: 1px solid $gray;
 }
 
 .details-title {
