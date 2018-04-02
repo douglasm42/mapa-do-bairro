@@ -9,8 +9,13 @@ function initMap() {
   this.onGoogleMapsLoad();
 }
 
+function googleError() {
+  this.onGoogleError();
+}
+
 // Torna a função de inicialização global e vinculada ao mapa.
 window.initMap = initMap.bind(map);
+window.googleError = googleError.bind(map);
 
 // Minha APIKey para usar a API do Google.
 const APIKey = 'AIzaSyA7oz8Q4iD0yb1Qkokep8DAz78j27XjpfQ';
@@ -24,5 +29,6 @@ export function loadGoogleMapsAPI() {
   script.src = `${url}?key=${APIKey}&callback=initMap`;
   script.async = true;
   script.defer = true;
+  script.onerror = window.googleError;
   document.body.appendChild(script);
 }

@@ -14,11 +14,13 @@ export default class Layout extends Component {
     this.state = {
       showSideBar: false,
       loaded: false,
+      loadError: false,
       detailedPlace: null
     };
 
     this.onSideBarToggle = this.onSideBarToggle.bind(this);
     this.onGoogleMapsLoad = this.onGoogleMapsLoad.bind(this);
+    this.onGoogleMapsLoadError = this.onGoogleMapsLoadError.bind(this);
     this.onHideDetails = this.onHideDetails.bind(this);
     this.showDetails = this.showDetails.bind(this);
   }
@@ -35,7 +37,12 @@ export default class Layout extends Component {
   // Esta função é executada quando a API do Google terminou de carregar e
   // o mapa está pronto para ser usado.
   onGoogleMapsLoad() {
-    this.setState({loaded: true});
+    this.setState({ loaded: true });
+  }
+
+  // Esta função é executada quando a API do Google falhou ao carregar
+  onGoogleMapsLoadError() {
+    this.setState({ loadError: true });
   }
 
   // Abre o painel de detalhes e mostra detalhes sobre o lugar passado por
@@ -104,9 +111,10 @@ export default class Layout extends Component {
           map={this.props.map}
           small={this.state.detailedPlace !== null}
           onGoogleMapsLoad={this.onGoogleMapsLoad}
+          onGoogleMapsLoadError={this.onGoogleMapsLoadError}
         />
         {details}
-        <Loading loaded={this.state.loaded} />
+        <Loading loaded={this.state.loaded} loadError={this.state.loadError} />
       </section>
     );
   }

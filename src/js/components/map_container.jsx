@@ -6,7 +6,7 @@ import { loadGoogleMapsAPI } from '../map/init';
 export default class MapContainer extends Component {
   componentDidMount() {
     // Registra o listener para indicar quando o mapa for carregado
-    this.props.map.setOnLoadListener(this.props.onGoogleMapsLoad);
+    this.props.map.setOnLoadListener(this.props.onGoogleMapsLoad, this.props.onGoogleMapsLoadError);
 
     //Inicializar o carregamento do Google Maps
     loadGoogleMapsAPI();

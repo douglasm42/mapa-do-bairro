@@ -12,6 +12,7 @@ class Map {
     this.places = places;
     this.loaded = false;
     this.onGoogleMapsLoad = null;
+    this.onGoogleError = null;
   }
 
   init() {
@@ -59,8 +60,9 @@ class Map {
     this.onGoogleMapsLoad();
   }
 
-  setOnLoadListener(f) {
-    this.onGoogleMapsLoad = f;
+  setOnLoadListener(onSuccess, onError) {
+    this.onGoogleMapsLoad = onSuccess;
+    this.onGoogleError = onError;
   }
 
   // Esconde todos os marcadores e exibe somente os que
