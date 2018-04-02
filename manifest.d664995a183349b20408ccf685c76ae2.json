@@ -45,7 +45,7 @@
   "short_name": "Goiânia",
   "orientation": "portrait",
   "display": "standalone",
-  "start_url": "/index.html",
+  "start_url": "/mapa-do-bairro/index.html",
   "description": "Projeto do curso de Desenvolvedor Front End da Udacity.",
   "background_color": "#000010"
 }
