@@ -152,7 +152,7 @@ body {
   top: 50%;
   position: fixed;
   z-index: 500;
-  background-color: #e9edef;
+  background-color: #f5f8fa;
   box-shadow: 0 9px 11px 10px #4b5354;
   transition: top 200ms ease-out; }
   @media (min-width: 1200px) {
@@ -178,7 +178,7 @@ body {
   height: 48px;
   justify-content: space-between;
   padding: 8px;
-  border-bottom: 1px solid #000010; }
+  border-bottom: 1px solid #4b5354; }
 
 .details-title {
   display: block;
@@ -209,6 +209,18 @@ body {
   overflow: auto;
   color: #000010;
   padding: 15px; }
+
+.error {
+  color: #f04; }
+
+.bold {
+  font-weight: 700; }
+
+.link {
+  color: #275ea3; }
+
+.center {
+  text-align: center; }
 
 .container {
   height: 100vh;

@@ -45,7 +45,6 @@ export default class DetailsBody extends Component {
   // Recebe o resultado da requisição e atualiza o conteúdo com o resultado
   onReceiveData(response) {
     const responsePages = response.body.query.pages;
-    console.log(responsePages);
 
     // Extrai as paginas do resultado da busca
     let pages = []

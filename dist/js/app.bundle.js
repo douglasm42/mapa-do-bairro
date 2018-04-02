@@ -950,6 +950,7 @@ var Map = function () {
     this.places = places;
     this.loaded = false;
     this.onGoogleMapsLoad = null;
+    this.onGoogleError = null;
   }
 
   _createClass(Map, [{
@@ -995,8 +996,9 @@ var Map = function () {
     }
   }, {
     key: 'setOnLoadListener',
-    value: function setOnLoadListener(f) {
-      this.onGoogleMapsLoad = f;
+    value: function setOnLoadListener(onSuccess, onError) {
+      this.onGoogleMapsLoad = onSuccess;
+      this.onGoogleError = onError;
     }
 
     // Esconde todos os marcadores e exibe somente os que
@@ -8128,11 +8130,13 @@ var Layout = function (_Component) {
     _this.state = {
       showSideBar: false,
       loaded: false,
+      loadError: false,
       detailedPlace: null
     };
 
     _this.onSideBarToggle = _this.onSideBarToggle.bind(_this);
     _this.onGoogleMapsLoad = _this.onGoogleMapsLoad.bind(_this);
+    _this.onGoogleMapsLoadError = _this.onGoogleMapsLoadError.bind(_this);
     _this.onHideDetails = _this.onHideDetails.bind(_this);
     _this.showDetails = _this.showDetails.bind(_this);
     return _this;
@@ -8158,6 +8162,14 @@ var Layout = function (_Component) {
     key: 'onGoogleMapsLoad',
     value: function onGoogleMapsLoad() {
       this.setState({ loaded: true });
+    }
+
+    // Esta função é executada quando a API do Google falhou ao carregar
+
+  }, {
+    key: 'onGoogleMapsLoadError',
+    value: function onGoogleMapsLoadError() {
+      this.setState({ loadError: true });
     }
 
     // Abre o painel de detalhes e mostra detalhes sobre o lugar passado por
@@ -8235,10 +8247,11 @@ var Layout = function (_Component) {
         _react2.default.createElement(_map_container2.default, {
           map: this.props.map,
           small: this.state.detailedPlace !== null,
-          onGoogleMapsLoad: this.onGoogleMapsLoad
+          onGoogleMapsLoad: this.onGoogleMapsLoad,
+          onGoogleMapsLoadError: this.onGoogleMapsLoadError
         }),
         details,
-        _react2.default.createElement(_loading2.default, { loaded: this.state.loaded })
+        _react2.default.createElement(_loading2.default, { loaded: this.state.loaded, loadError: this.state.loadError })
       );
     }
   }]);
@@ -8674,7 +8687,7 @@ var MapContainer = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       // Registra o listener para indicar quando o mapa for carregado
-      this.props.map.setOnLoadListener(this.props.onGoogleMapsLoad);
+      this.props.map.setOnLoadListener(this.props.onGoogleMapsLoad, this.props.onGoogleMapsLoadError);
 
       //Inicializar o carregamento do Google Maps
       (0, _init.loadGoogleMapsAPI)();
@@ -8723,8 +8736,13 @@ function initMap() {
   this.onGoogleMapsLoad();
 }
 
+function googleError() {
+  this.onGoogleError();
+}
+
 // Torna a função de inicialização global e vinculada ao mapa.
 window.initMap = initMap.bind(_map.map);
+window.googleError = googleError.bind(_map.map);
 
 // Minha APIKey para usar a API do Google.
 var APIKey = 'AIzaSyA7oz8Q4iD0yb1Qkokep8DAz78j27XjpfQ';
@@ -8738,6 +8756,7 @@ function loadGoogleMapsAPI() {
   script.src = url + '?key=' + APIKey + '&callback=initMap';
   script.async = true;
   script.defer = true;
+  script.onerror = window.googleError;
   document.body.appendChild(script);
 }
 
@@ -8986,6 +9005,22 @@ var Loading = function (_Component) {
     key: 'render',
     value: function render() {
       var hide = this.props.loaded ? ' loading-hide' : '';
+      var message = void 0;
+      if (this.props.loadError) {
+        message = _react2.default.createElement(
+          'p',
+          { className: 'loading-subtitle error' },
+          'N\xE3o foi possivel carregar o mapa.',
+          _react2.default.createElement('br', null),
+          'Recarregue a p\xE1gina.'
+        );
+      } else {
+        message = _react2.default.createElement(
+          'p',
+          { className: 'loading-subtitle' },
+          'Carregando...'
+        );
+      }
       return _react2.default.createElement(
         'article',
         { className: 'loading' + hide },
@@ -8993,11 +9028,7 @@ var Loading = function (_Component) {
           'h1',
           { className: 'loading-title' },
           'Goi\xE2nia',
-          _react2.default.createElement(
-            'p',
-            { className: 'loading-subtitle' },
-            'Carregando...'
-          )
+          message
         )
       );
     }
@@ -9182,9 +9213,10 @@ var DetailsBody = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (DetailsBody.__proto__ || Object.getPrototypeOf(DetailsBody)).call(this, props));
 
-    _this.state = { place: props.place, data: null };
+    _this.state = { place: props.place, data: null, success: null };
 
     _this.onReceiveData = _this.onReceiveData.bind(_this);
+    _this.onFetchError = _this.onFetchError.bind(_this);
     return _this;
   }
 
@@ -9209,9 +9241,8 @@ var DetailsBody = function (_Component) {
         explaintext: '',
         titles: place.wikipedia
       };
-      _superagent2.default.get(url).query(query).then(this.onReceiveData).catch(function (error) {
-        return console.log(error);
-      });
+
+      _superagent2.default.get(url).query(query).on('error', this.onFetchError).then(this.onReceiveData);
     }
 
     // Recebe o resultado da requisição e atualiza o conteúdo com o resultado
@@ -9219,13 +9250,36 @@ var DetailsBody = function (_Component) {
   }, {
     key: 'onReceiveData',
     value: function onReceiveData(response) {
-      var pages = response.body.query.pages;
-      for (var key in pages) {
-        if (pages.hasOwnProperty(key)) {
-          var page = pages[key];
-          this.setState({ data: page.extract });
+      var responsePages = response.body.query.pages;
+
+      // Extrai as paginas do resultado da busca
+      var pages = [];
+      for (var key in responsePages) {
+        if (responsePages.hasOwnProperty(key)) {
+          var page = responsePages[key];
+          pages.push(page);
         }
       }
+
+      // A busca deve retornar apenas uma página e ela deve ser válida
+      if (pages.length == 1) {
+        if (pages[0].extract) {
+          this.setState({ data: pages[0].extract, success: true });
+        } else {
+          this.setState({ data: 'Busca não retornou resultados.', success: false });
+        }
+      } else {
+        this.setState({ data: 'Busca retornou mais de um resultado.', success: false });
+      }
+    }
+
+    // Callback para a chamada da API
+
+  }, {
+    key: 'onFetchError',
+    value: function onFetchError(error) {
+      window.errorwiki = error;
+      this.setState({ data: 'Não foi possivel carregar os detalhes do lugar.', success: false });
     }
 
     // Este método é executado quando o componente
@@ -9256,13 +9310,13 @@ var DetailsBody = function (_Component) {
       var place = this.state.place;
 
       var body = void 0;
-      if (this.state.data) {
+      if (this.state.success === true) {
         body = _react2.default.createElement(
           'div',
           { className: 'details-body' },
           _react2.default.createElement(
             'p',
-            null,
+            { className: 'bold' },
             'Descri\xE7\xE3o na Wikip\xE9dia:'
           ),
           _react2.default.createElement(
@@ -9272,8 +9326,23 @@ var DetailsBody = function (_Component) {
           ),
           _react2.default.createElement(
             'a',
-            { href: 'https://pt.wikipedia.org/wiki/' + place.wikipedia, className: 'details-link', target: '_blank' },
+            { href: 'https://pt.wikipedia.org/wiki/' + place.wikipedia, className: 'link', target: '_blank' },
             'Saiba Mais'
+          )
+        );
+      } else if (this.state.success === false) {
+        body = _react2.default.createElement(
+          'div',
+          { className: 'details-body error' },
+          _react2.default.createElement(
+            'p',
+            { className: 'bold' },
+            'Ocorreu um erro:'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            this.state.data
           )
         );
       } else {
@@ -9295,7 +9364,7 @@ var DetailsBody = function (_Component) {
       var prevPlace = prevState.place;
       var nextPlace = nextProps.place;
       if (nextPlace !== prevPlace) {
-        return { place: nextPlace, data: null };
+        return { place: nextPlace, data: null, success: null };
       }
       return null;
     }
