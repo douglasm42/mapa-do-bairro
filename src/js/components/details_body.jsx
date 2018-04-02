@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Request from 'superagent';
 
-import DetailsClose from './details_close';
-
+// Exibe as informações obtidas pela API da wikipédia
 export default class DetailsBody extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +10,8 @@ export default class DetailsBody extends Component {
     this.onReceiveData = this.onReceiveData.bind(this);
   }
 
+  // Verifica se a propriedade mudou para garantir que
+  // o conteúdo do componente atualize corretamente
   static getDerivedStateFromProps(nextProps, prevState) {
     const prevPlace = prevState.place;
     const nextPlace = nextProps.place;
@@ -20,6 +21,7 @@ export default class DetailsBody extends Component {
     return null;
   }
 
+  // Realiza uma requisição à API da Wikipédia
   fetchData() {
     const place = this.state.place;
     const url = 'https://pt.wikipedia.org/w/api.php';
@@ -32,9 +34,13 @@ export default class DetailsBody extends Component {
       explaintext: '',
       titles: place.wikipedia
     }
-    Request.get(url).query(query).then(this.onReceiveData).catch(error => console.log(error));;
+    Request.get(url)
+      .query(query)
+      .then(this.onReceiveData)
+      .catch(error => console.log(error));
   }
 
+  // Recebe o resultado da requisição e atualiza o conteúdo com o resultado
   onReceiveData(response) {
     const pages = response.body.query.pages;
     for (var key in pages) {
@@ -45,10 +51,16 @@ export default class DetailsBody extends Component {
     }
   }
 
+  // Este método é executado quando o componente
+  // é adicionado na pagina. Aqui é usado para
+  // realizar a requisição.
   componentDidMount() {
     this.fetchData();
   }
 
+  // Verifica se o estado mudou
+  // Se foi modificado algo, requisita nova informação sobre
+  // o local.
   componentDidUpdate(prevProps, prevState) {
     const place = this.state.place;
     if(place && prevState.place !== place) {
@@ -63,6 +75,7 @@ export default class DetailsBody extends Component {
     if (this.state.data) {
       body = (
         <div className='details-body'>
+          <p>Descrição na Wikipédia:</p>
           <p>{this.state.data}</p>
           <a href={'https://pt.wikipedia.org/wiki/' + place.wikipedia} className='details-link' target='_blank'>Saiba Mais</a>
         </div>

@@ -1,5 +1,5 @@
 # mapa-do-bairro
-Penúltimo projeto do curso de desenvolvedor front end da Udacity.
+Mapa de pontos de interesse.
 
 Como executar o código:
 * `npm install` para instalar as dependências.
@@ -7,8 +7,11 @@ Como executar o código:
 * `npm run build` para construir o código.
 * `npm run watch` para vigiar o código e construir quando necessário.
 
-Eu utilizei o `React` para implementar a interface, `sass` para
+Foi utilizado o `React` para implementar a interface, `sass` para
 lidar com o `css` e `superagent` para requisições `http`.
+
+API de mapas do Google para criar o mapa e API da wikipédia para
+obter mais informações sobre os lugares.
 
 ## Estrutura do projeto
 
@@ -17,6 +20,10 @@ O código está todo na pasta src, dividido em `css`, `img` e `js`.
 Dentro de `js` o projeto está dividido em `components` para o código
 dos componentes `React`, `data` para os dados do aplicativo e `map`
 para o código que lida com a API do Google Maps.
+
+O aplicativo começa iniciando os componentes `react`, depois inicia
+o carregamento do mapa do Google, e quando isso é concluido,
+adiciona os pontos ao mapa e libera a aplicação para o uso.
 
 ### `components`
 Os componentes `React` estão divididos em cinco partes enraizadas no

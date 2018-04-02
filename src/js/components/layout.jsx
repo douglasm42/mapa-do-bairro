@@ -6,6 +6,7 @@ import MapContainer from './map_container';
 import Loading from './loading';
 import Details from './details';
 
+// Componente raíz da aplicação. Guarda maior parte do estado da aplicação.
 export default class Layout extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +23,7 @@ export default class Layout extends Component {
     this.showDetails = this.showDetails.bind(this);
   }
 
+  // Recebe o evento de click do botão no cabeçalho que mostra a barra lateral
   onSideBarToggle() {
     this.setState(function (prevState, props) {
       return {
@@ -30,31 +32,48 @@ export default class Layout extends Component {
     });
   }
 
+  // Esta função é executada quando a API do Google terminou de carregar e
+  // o mapa está pronto para ser usado.
   onGoogleMapsLoad() {
     this.setState({loaded: true});
   }
 
+  // Abre o painel de detalhes e mostra detalhes sobre o lugar passado por
+  // parametro. Esta função é vunculada aos eventos de click dos itens
+  // da barra lateral e dos marcadores do mapa.
   showDetails(place) {
     const map = this.props.map;
     let prevPlace = this.state.detailedPlace;
 
-    // Faz o marcador anterior parar de pular
+    // Muda a cor do marcador selecionado
     place.marker.setSelected();
+
+    // Verifica se tinha algum marcador selecionado e
+    // desmarca ele.
     if (prevPlace) {
       prevPlace.marker.setUnselected();
     }
 
+    // Atualiza o estado para mostrar o novo lugar nos detalhes
+    // e fechar a barra lateral se ela estiver aberta.
     this.setState({ detailedPlace: place, showSideBar: false });
+
+    // Centraliza o mapa na posição quando a animação do painel
+    // de detalhes terminar.
     setTimeout(() => map.panToPosition(place.position), 200);
   }
 
+  // Função executada quando o painel de detalhes é fechado
   onHideDetails() {
-    if(this.state.detailedPlace) {
-      let map = this.props.map;
-      this.state.detailedPlace.marker.setUnselected();
-      this.setState({ detailedPlace: null });
-      setTimeout(map.panToPlaces.bind(map), 200);
-    }
+    let map = this.props.map;
+    // Desmarca o marcador no mapa
+    this.state.detailedPlace.marker.setUnselected();
+
+    // Remove o lugar detalhado
+    this.setState({ detailedPlace: null });
+
+    // Espera a animação terminar e enquadra todos os pontos visiveis no mapa
+    setTimeout(map.panToPlaces.bind(map), 200);
   }
 
   render() {
