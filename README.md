@@ -7,6 +7,9 @@ Como executar o código:
 * `npm run build` para construir o código.
 * `npm run watch` para vigiar o código e construir quando necessário.
 
+A pasta `dist` contém a build do código mais recente. Use um servidor
+http qualquer para executar.
+
 Foi utilizado o `React` para implementar a interface, `sass` para
 lidar com o `css` e `superagent` para requisições `http`.
 
